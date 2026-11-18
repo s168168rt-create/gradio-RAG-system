@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10b981">
+<title>目前離線 · RAG 文件問答</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:24px;
+       font:16px/1.6 "Noto Sans TC",system-ui,-apple-system,"Segoe UI",sans-serif;
+       background:#f8fafc;color:#0f172a}
+  main{max-width:420px;text-align:center}
+  img{width:96px;height:96px;border-radius:22px}
+  h1{font-size:22px;margin:16px 0 4px}
+  p{color:#64748b;margin:0 0 20px}
+  button{font:inherit;min-height:44px;padding:0 24px;border:0;border-radius:12px;
+         background:#10b981;color:#fff;font-weight:600;cursor:pointer}
+  @media (prefers-color-scheme:dark){body{background:#0f172a;color:#e2e8f0}p{color:#94a3b8}}
+</style>
+</head>
+<body>
+<main>
+  <img src="/pwa/icons/icon-192.png" alt="">
+  <h1>目前離線</h1>
+  <p>文件問答需要連線到伺服器（檢索與 Groq 模型）。<br>恢復網路後會自動重新載入。</p>
+  <button onclick="location.reload()">重新連線</button>
+</main>
+<script>addEventListener('online',()=>location.reload())</script>
+</body>
+</html>

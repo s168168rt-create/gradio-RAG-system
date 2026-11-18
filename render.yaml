@@ -1,0 +1,24 @@
+# Render Blueprint：在 Render 選 New → Blueprint 並連到此 repo 即可
+services:
+  - type: web
+    name: rag-pwa
+    runtime: python
+    plan: standard            # 2 GB RAM。嵌入模型 + torch 在 512 MB 的 free / starter 會記憶體不足
+    region: singapore         # 台灣使用者延遲較低；可改 oregon / frankfurt …
+    buildCommand: pip install -r requirements.txt && python scripts/download_model.py
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips "*"
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: HF_HOME            # 放在專案目錄內，建置時下載的模型才會帶到執行環境
+        value: /opt/render/project/src/.hf_cache
+      - key: TOKENIZERS_PARALLELISM
+        value: "false"
+      - key: GROQ_API_KEY       # 選填：伺服器預設 Key（只在後端使用）
+        sync: false
+      - key: APP_PASSWORD       # 建議：設了才會要求登入，避免別人用掉你的 Groq 額度
+        sync: false
+      - key: APP_USERNAME
+        value: admin

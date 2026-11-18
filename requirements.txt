@@ -1,0 +1,14 @@
+# CPU 版 torch（體積小很多；Render 沒有 GPU）
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers>=3.0
+
+gradio>=5.50,<6          # 本專案以 Gradio 5 撰寫；Gradio 6 的 css/theme/head 參數位置不同
+fastapi
+uvicorn
+groq>=0.30
+chromadb>=1.0,<2
+pypdf>=5.0
+python-docx>=1.1
+scikit-learn>=1.5
+numpy

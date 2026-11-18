@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest
+httpx        # FastAPI TestClient
+pillow       # scripts/make_icons.py 重新產生 PWA 圖示
